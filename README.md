@@ -1,18 +1,19 @@
 Directional Parity Encoder and Decoder
 ======================================
 
-Here at WNYC we're received a lot of questions about the formatting of
-the LED bit pattern in our Cicada Tracker
-[http://project.wnyc.org/cicadas/].  
+We've received lots of questions about the encoding of the [Cicada
+Tracker](http://project.wnyc.org/cicadas) LEDs.  More than a few
+people have been interested in learning how its possible to reverse
+the bits and still correctly decode the temperature.
 
-While the code that encodes temperatures as a bit pattern in your
-thermometer and the code that decodes it on our website are both open
-source, we admit the original packaging of this code is not the most
-useful to somebody interested in hacking this into their own project.
+We use a technique called "directional parity encoding".  While the
+encoder and decoder used for the Cicada Tracker are open sourced, they
+are not as convenient as a library for the same written in your
+favorite language.  WNYC's directional parity project is about porting
+this library into as many languages as possible so everybody can stop
+worrying about which way they are holding their device.
 
-So far we're ported this code to Python and constructed command line
-versions for you to use in shell scripts based on the python
-implementation. 
+So far we've created a python library and command line version.  
 
 
 Installation
