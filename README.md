@@ -1,23 +1,32 @@
 Directional Parity Encoder and Decoder
 ======================================
 
-We've received lots of questions about the encoding of the [Cicada
-Tracker](http://project.wnyc.org/cicadas) LEDs.  More than a few
-people have been interested in learning how its possible to reverse
-the bits and still correctly decode the temperature.
+Encode a number in a reversible sequence of bits using only a single additional bit
 
-We use a technique called "directional parity encoding".  While the
-encoder and decoder used for the Cicada Tracker are open sourced, they
-are not as convenient as a library for the same written in your
-favorite language.  WNYC's directional parity project is about porting
-this library into as many languages as possible so everybody can stop
-worrying about which way they are holding their device.
+    # directional_parity_encode 7 42  # <number of bits> <value to encode>
+    0 1 0 0 1 0 1
+    # directional_parity_decode 0 1 0 0 1 0 1
+    42
+    # directional_parity_decode 1 0 1 0 0 1 0 
+    42
 
-So far we've created a python library and command line version.  
+Background
+----------
 
+This project was borne of the [WNYC Cicada
+Tracker](http://project.wnyc.org/cicadas).  During our hack events
+we've been asked more than a few times "how does this work" and "can I
+use this in my own project."  I hope this project answers both questions.   
+
+Gradually the number of languages this library is implemented in will
+grow.  Currently there is a pure python version and a set of command
+line tools in the `python` subdirectory.  I hope to add versions for
+more lanuages shortly.
 
 Installation
 ============
+
+These instructions are fo the python version.  
 
     pip install directional_parity
 
@@ -38,7 +47,7 @@ To determine the largest number you can encode in a given number of bits:
 To encode a number as a directional parity bit sequence:
 
     # directional_parity_encode 7 42
-     0 1 0 0 1 0 1
+    0 1 0 0 1 0 1
 
 To decode a bit stream
 
