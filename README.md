@@ -21,7 +21,7 @@ use this in my own project."  I hope this project answers both questions.
 Gradually the number of languages this library is implemented in will
 grow.  Currently there is a pure python version and a set of command
 line tools in the `python` subdirectory.  I hope to add versions for
-more lanuages shortly.
+more languages shortly.
 
 Installation
 ============
