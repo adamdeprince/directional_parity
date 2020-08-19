@@ -124,15 +124,16 @@ can't be encoded in the number of bits you've selected.
 Motivation
 ==========
 
-When we set out in mid February to design a thermometer for the Cicada
-Tracker project we had two overwhelming requirements: That the design
-be inexpensive, simple to build and simple to use, simple to source and fun. 
+When we set out in mid February 2012 to design a thermometer for the Cicada
+Tracker project we had five overwhelming requirements: That the design
+be inexpensive, simple to build, simple to use, simple to source and fun. 
 
 Our goal was to ensure that any interested listener would be able to
 build a unit from in Radio Shack.  We started digging through
 individual parts in Radio Shack's parts bins, but we quickly found
-4that are local store didn't have everything we needed.  We walked down
-the street to another Radio Shack in lower Manhattan we found some of
+that are local stores didn't have everything we needed and didn't have 
+the same inventory between stores.  We walked down the street 
+to another Radio Shack in lower Manhattan we found some of
 the parts we needed but noted other necessary parts were missing.  We
 again walked to another Radio Shack (we're located in lower Manhattan,
 there really are multiple Radio Shacks within a 15 minute walk) and
@@ -148,8 +149,8 @@ number, which worked well for it would allowed us to encode all
 expected temperatures in Fahrenheit within a 7 bit number.  Except we
 ran into two problems.  First, it wasn't always obvious which way was
 up on the finished design.  "Hey, can you try entering this into my
-website" resulted in misorientation with almost chance probabilities.
-
+website" resulted in misorientation with almost chance probabilities,
+even when careful instructions were given.
 
 To solve this problem I developed the directional parity algorithm
 implemented in this code, but I felt unhappy about the precision I was
@@ -163,10 +164,10 @@ I sat down and considered how much precision I might require to give
 my coworkers the impression that we're working in Fahrenheit even
 when we are not.  With 9 bits using the directional parity algorithm
 I can encode values between 0 and 271 inclusive.  I then considered
-5the coldest ground temperature we're likely to encounter.  The northern
+the coldest ground temperature we're likely to encounter.  The northern
 most realistic range of Brood II is New England; I myself am a Native
 Vermonter and recall just two winters ago seeing -30 Fahrenheit on a
-temperature gouger and I'm designing this in February, but the earliest
+temperature logger and I'm designing this in February, but the earliest
 deployment is likely to be in the spring.
 
 Rather arbitrarily I decided to make -20oC the coldest temperature the
@@ -178,14 +179,13 @@ dramatically and enough that the resistance might be so high that the
 Arduino will have trouble measuring the voltage from the resistor
 network because the ADC itself will have a low enough resistance to
 affect the value.  But that's okay, whether its -20 or -10 doesn't
-matter very much when predicting when the ground will hit the 17.75
-degrees Celsius required for Cicadas to hatch.
+matter very much for prediction: Cicadas hatch at 17.5 degrees Celsius.
 
 At the other end the highest realistic temperature we'd encounter is
 not from the ground, but folks measuring their own body temperature
 with the thermistor.  Time and time again at the Brooklyn Brewery
-event folks would place the thermistor in their hands, so we had to
-reach body temperature.
+event folks would place the thermistor in their hands or mouths so,
+our scale had to reach body temperature.
 
 Its about 57 degrees from -20 to body temperature, so reporting in
 quarter degrees Celsius using the 0-271 range offered by a 9 bit
